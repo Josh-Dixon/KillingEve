@@ -1,0 +1,36 @@
+let ctstring = ""
+let ctChar = ""
+let asciiChar = 0
+let ptstring = ""
+let numshift = 0
+input.onButtonPressed(Button.AB, function () {
+    numshift = numshift % 26 + 1
+    for (let index = 0; index <= ptstring.length - 1; index++) {
+        if (ptstring.charAt(index) != " ") {
+            asciiChar = ptstring.substr(index).charCodeAt(0) + numshift
+            if (asciiChar > "Z".charCodeAt(0)) {
+                asciiChar = asciiChar - 26
+            }
+            ctChar = String.fromCharCode(asciiChar)
+        } else {
+            ctChar = ptstring.charAt(index)
+        }
+        ctstring = "" + ctstring + ctChar
+    }
+    while (true) {
+        basic.showString(ctstring)
+    }
+})
+// example, do not use
+input.onButtonPressed(Button.A, function () {
+    numshift += 1
+    basic.showNumber(numshift)
+})
+// example, do not use
+input.onButtonPressed(Button.B, function () {
+    numshift += -1
+    basic.showNumber(numshift)
+})
+// Will be diffie hellman key
+numshift = 0
+ptstring = "HELLO"
